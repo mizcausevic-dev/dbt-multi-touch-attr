@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_marketing_touches
+    description: Normalized touchpoint records for attribution modeling.
+    columns:
+      - name: touch_id
+        tests:
+          - not_null
+          - unique
+      - name: opportunity_id
+        tests:
+          - not_null
+  - name: int_journey_windows
+    description: Ordered journey windows for touch weighting and model comparison.
+    columns:
+      - name: touch_rank_asc
+        tests:
+          - not_null
+      - name: touch_rank_desc
+        tests:
+          - not_null
+  - name: fct_multi_touch_credit
+    description: Revenue-credit fact table by opportunity and channel.
+    columns:
+      - name: attribution_role
+        tests:
+          - accepted_values:
+              values: ['first-touch', 'last-touch', 'assist']
