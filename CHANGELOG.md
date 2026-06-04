@@ -14,3 +14,9 @@
   - Shipped initial TypeScript control plane with overview, model lane, journey credit, verification, and docs.
 - v1.0.0
   - Published the repo with dbt-style SQL assets, browser-rendered proof, and release-gate validation.
+
+## 2026-06-04
+- v1.1.0
+  - Refreshed the repo onto the current Kinetic Gain static Pages rail.
+  - Added prerendered `site/` output, custom domain support, sitemap generation, and a modern board-facing shell.
+  - Reframed the UI around attribution posture, model governance, and inspectable journey credit.

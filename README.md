@@ -1,16 +1,26 @@
 # dbt Multi Touch Attr
 
-TypeScript control plane plus dbt-style SQL assets for multi-touch attribution, journey stitching, and reviewable revenue-credit logic.
+Board-ready attribution surface for journey stitching, model comparison, and reviewable revenue-credit logic.
 
-## Why this exists
+- Live target: [http://attribution.kineticgain.com/](http://attribution.kineticgain.com/)
+- Repo: [mizcausevic-dev/dbt-multi-touch-attr](https://github.com/mizcausevic-dev/dbt-multi-touch-attr)
 
-Attribution breaks down when teams can see the chart but not the underlying journey logic. The common problems are predictable:
-- raw touches are not normalized before model weighting begins
-- first-touch and last-touch debates happen without inspectable path rows
-- channel credit moves, but nobody can explain why
-- revenue influence becomes a dashboard story instead of a warehouse contract
+## Why this matters
 
-`dbt-multi-touch-attr` treats attribution as a governed data product. It keeps the transformation path, journey rows, and revenue-credit outcomes visible in one place.
+Attribution usually fails in the same way:
+- teams see credit outputs but not the touch path that produced them
+- finance sees influenced revenue without enough model explainability
+- RevOps inherits weighting logic that cannot be challenged lane by lane
+- budget conversations happen after credit has already hardened into dashboard mythology
+
+`dbt-multi-touch-attr` keeps the transformation flow, journey rows, and revenue-credit allocations visible in one place so channel influence remains inspectable.
+
+## What it includes
+
+- TypeScript executive intelligence surface for attribution posture and model governance
+- journey-level touch inspection next to final credit allocations
+- dbt-style staging, intermediate, and mart SQL assets
+- prerendered static site, JSON payloads, screenshots, and docs
 
 ## Routes
 
@@ -29,6 +39,16 @@ Attribution breaks down when teams can see the chart but not the underlying jour
 - `/api/verification`
 - `/api/sample`
 
+## Local run
+
+```powershell
+cd dbt-multi-touch-attr
+npm install
+npm run verify
+npm run prerender
+npm run render:assets
+```
+
 ## Screenshots
 
 ![Overview](./screenshots/01-overview-proof.png)
@@ -36,30 +56,7 @@ Attribution breaks down when teams can see the chart but not the underlying jour
 ![Journey credit](./screenshots/03-journey-credit-proof.png)
 ![Verification](./screenshots/04-verification-proof.png)
 
-## Local Development
-
-```powershell
-cd dbt-multi-touch-attr
-npm install
-npm run dev
-```
-
-Open:
-- [http://127.0.0.1:5274/](http://127.0.0.1:5274/)
-- [http://127.0.0.1:5274/model-lane](http://127.0.0.1:5274/model-lane)
-- [http://127.0.0.1:5274/journey-credit](http://127.0.0.1:5274/journey-credit)
-- [http://127.0.0.1:5274/verification](http://127.0.0.1:5274/verification)
-- [http://127.0.0.1:5274/docs](http://127.0.0.1:5274/docs)
-
-## Validation
-
-- `npm run build`
-- `npm run test`
-- `npm run demo`
-- `npm run smoke`
-- `npm run render:assets`
-
-## Warehouse Assets
+## Warehouse assets
 
 - [models/staging/stg_marketing_touches.sql](./models/staging/stg_marketing_touches.sql)
 - [models/intermediate/int_journey_windows.sql](./models/intermediate/int_journey_windows.sql)
