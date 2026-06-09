@@ -116,6 +116,62 @@ function pageFrame(title: string, description: string, activePath: string, body:
 </html>`;
 }
 
+function renderProductDepth() {
+  const cards = [
+    {
+      eyebrow: "Product depth",
+      title: "What this product does",
+      body:
+        "Turns marketing touch data, journey windows, and revenue-credit outputs into an attribution control plane that Growth, RevOps, and finance can inspect before budget changes are made."
+    },
+    {
+      eyebrow: "GTM analyst lens",
+      title: "Where revenue teams use it",
+      body:
+        "Use it when channel performance is disputed, paid spend is moving, partner influence is overstated, or lifecycle touches need defensible credit instead of dashboard mythology."
+    },
+    {
+      eyebrow: "Value architecture",
+      title: "Where the money leaks",
+      body:
+        "The leak is not just bad attribution. It is budget reallocations, CAC narratives, partner commissions, and pipeline forecasts based on credit logic that cannot be traced back to real touches."
+    },
+    {
+      eyebrow: "Technical proof",
+      title: "What is inspectable",
+      body:
+        "The repo includes dbt-style staging, intermediate, and mart SQL assets, TypeScript scoring logic, JSON outputs, prerendered routes, tests, smoke checks, and screenshot evidence."
+    },
+    {
+      eyebrow: "Portfolio pattern",
+      title: "What these repos have in common",
+      body:
+        "Each Kinetic Gain surface converts messy operational evidence into board-readable decisions: owner, signal, model, risk, value, route, and verification all stay visible together."
+    }
+  ];
+
+  return `<section class="sec">
+    <div class="sec-head">
+      <span class="sec-num">00</span>
+      <div>
+        <h2 class="sec-title">From attribution data to defensible revenue decisions.</h2>
+        <p class="sec-lead">This is the product layer behind the demo: not another attribution screenshot, but a reviewable evidence path for commercial decisions.</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      ${cards
+        .map(
+          (card) => `<article class="acard lane-card">
+            <span class="metric-chip">${escapeHtml(card.eyebrow)}</span>
+            <h3>${escapeHtml(card.title)}</h3>
+            <p class="lane-copy">${escapeHtml(card.body)}</p>
+          </article>`
+        )
+        .join("")}
+    </div>
+  </section>`;
+}
+
 export function renderOverview() {
   const stats = summary();
   const lane = modelLane();
@@ -168,6 +224,7 @@ export function renderOverview() {
         </div>
       </div>
     </section>
+    ${renderProductDepth()}
     <section class="sec">
       <div class="sec-head">
         <span class="sec-num">01</span>
@@ -260,6 +317,7 @@ export function renderJourneyCredit() {
         </div>
       </div>
     </section>
+    ${renderProductDepth()}
     <section class="sec">
       <div class="card-grid">
         <article class="acard lane-card">
